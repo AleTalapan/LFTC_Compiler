@@ -16,6 +16,7 @@
 typedef enum{
 	OP_HALT	// ends the code execution
 	,OP_PUSH_I		// [ct.i] puts on stack the constant ct.i
+	,OP_PUSH_D		// [ct.f] puts on stack the constant ct.f
 	,OP_CALL			// [instr] calls a VM function which starts with the given instruction
 	,OP_CALL_EXT	// [native_addr] calls a host function (machine code) at the given address
 	,OP_ENTER		// [nb_locals] creates a function frame with the given number of local variables
@@ -28,7 +29,9 @@ typedef enum{
 	,OP_FPLOAD		// [idx] puts on stack the value from FP[idx]
 	,OP_FPSTORE		// [idx] puts in FP[idx] the value from stack
 	,OP_ADD_I			// adds 2 int values from stack and puts the result on stack
+	,OP_ADD_D
 	,OP_LESS_I			// compares 2 int values from stack and puts the result on stack as int
+	,OP_LESS_D
 	}Opcode;
 
 typedef struct Instr Instr;
@@ -67,3 +70,4 @@ void run(Instr *IP);
 
 // generates a test program
 Instr *genTestProgram();
+Instr *genTestTema();
